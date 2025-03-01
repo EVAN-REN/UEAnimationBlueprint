@@ -12,6 +12,7 @@ transition rule share存储转换规则
 
 2.
 跑步停止
+![](https://github.com/EVAN-REN/UEAnimationBlueprint/blob/main/Image/U1.gif)
 动画主蓝图：
 BlueprintThreadSafeUpdateAnimation链接各种update的function，这些function会update一些变量
 创建移动跳跃的状态机，变量会用在状态机改变的条件中
@@ -35,6 +36,7 @@ character蓝图：
 
 3.
 跳跃条件：与上类似
+![](https://github.com/EVAN-REN/UEAnimationBlueprint/blob/main/Image/U2.gif)
 
 4.
 距离匹配（调整走一步的距离和速度的关系）
@@ -53,6 +55,10 @@ Advance Time by Distance Matching需要用到distance curve，可以添加为变
 动画实现蓝图fall land里：类似start，但是sequence直接绑定，relevant中设置explicit time
 在update中设置Distance Match to Target
 
+![](https://github.com/EVAN-REN/UEAnimationBlueprint/blob/main/Image/U31.gif)
+![](https://github.com/EVAN-REN/UEAnimationBlueprint/blob/main/Image/U32.gif)
+![](https://github.com/EVAN-REN/UEAnimationBlueprint/blob/main/Image/U33.gif)
+
 5.
 步幅适配（调整步幅与播放速率）
 动画实现蓝图start里：
@@ -65,7 +71,6 @@ Foot Definitions 定义角色的 左右脚骨骼，用于让 Stride Warping 识�
 然后在relevant函数中设置alpha为0
 在update函数中，设置变化的alpha值，并根据alpha值插值设置最低的playrate
 
-
 动画实现蓝图cycle里：同上
 设置stride warping所需的alpha值
 在update函数中，根据是否撞到墙来插值地设置变化的alpha值
@@ -74,6 +79,7 @@ Foot Definitions 定义角色的 左右脚骨骼，用于让 Stride Warping 识�
 
 6.
 方向适配（适配不同方向）
+![](https://github.com/EVAN-REN/UEAnimationBlueprint/blob/main/Image/U4.gif)
 创建一个枚举Enumeration存储基本方向
 创建一个结构体存储四种方向的动画
 
@@ -97,6 +103,7 @@ character 蓝图中：
 
 7.
 回转运动pivot
+![](https://github.com/EVAN-REN/UEAnimationBlueprint/blob/main/Image/U5.gif)
 主动画蓝图中：
 在加速度计算的function中加入pivot direction，设置此值为此值与当前加速度的插值，计算pivot方向的角度，然后算出pivot的方向
 
@@ -116,6 +123,7 @@ pivot到cycle通过状态通知和pivot时间加函数（判断pivot方向与速
 
 8.
 原地旋转
+![](https://github.com/EVAN-REN/UEAnimationBlueprint/blob/main/Image/U6.gif)
 主动画蓝图中：
 在rotation function中更新yaw值
 
@@ -138,6 +146,7 @@ pivot到cycle通过状态通知和pivot时间加函数（判断pivot方向与速
 
 9.
 Aim offset：
+![](https://github.com/EVAN-REN/UEAnimationBlueprint/blob/main/Image/U7.gif)
 在所有aimoffset相关动画设置一下base pose aimation为最其中基本那个动画
 创建aim offset来设置一下这些动画
 
@@ -153,6 +162,7 @@ Aim offset：
 
 10.
 脚步IK控制绑定Control Rig：
+![](https://github.com/EVAN-REN/UEAnimationBlueprint/blob/main/Image/U8.gif)
 主动画蓝图中：
 在动画层最外面加入一个bool型的control rig，创建一个control rig class（cr_foot来设置脚步控制器）
 
